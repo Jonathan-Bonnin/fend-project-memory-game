@@ -28,6 +28,10 @@ function shuffle(array) {
 const cards = document.querySelectorAll('.card')
 let checkedCardPair = [];
 let moves = 0;
+function displayCard(card) {
+  card.classList.add('open','show');
+  checkedCardPair.push(card)
+}
 function checkMatch(symbol1, symbol2){
   if (symbol1.innerHTML === symbol2.innerHTML){
     symbol1.classList.add('match');
@@ -42,15 +46,13 @@ function checkMatch(symbol1, symbol2){
   if (moves > 1){
   document.querySelector('.plural').innerHTML = 's';
   }
-
 }
 
 
 for(var i = 0; i < cards.length; i++){
   cards[i].addEventListener('click', function(){
     if (this.classList.contains('open') === false){
-    this.classList.add('open','show');
-    checkedCardPair.push(this)
+      displayCard(this);
     if (checkedCardPair.length === 2) {
       checkMatch(checkedCardPair[0],checkedCardPair[1])
     }
