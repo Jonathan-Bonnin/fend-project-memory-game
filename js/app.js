@@ -27,6 +27,7 @@ function shuffle(array) {
 
 const cards = document.querySelectorAll('.card')
 let checkedCardPair = [];
+let moves = 0;
 function checkMatch(symbol1, symbol2){
   if (symbol1.innerHTML === symbol2.innerHTML){
     symbol1.classList.add('match');
@@ -36,6 +37,12 @@ function checkMatch(symbol1, symbol2){
     setTimeout(function() {symbol2.classList.remove('open','show')}, 700);
   }
   checkedCardPair = [];
+  moves++;
+  document.querySelector('.moves').innerHTML = moves;
+  if (moves > 1){
+  document.querySelector('.plural').innerHTML = 's';
+  }
+
 }
 
 
