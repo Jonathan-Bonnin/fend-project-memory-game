@@ -26,11 +26,11 @@ function shuffle(array) {
 }
 
 const cards = document.querySelectorAll('.card')
-let checkedCardPair = [];
+let openCards = [];
 let moves = 0;
 function displayCard(card) {
   card.classList.add('open','show');
-  checkedCardPair.push(card)
+  openCards.push(card)
 }
 function checkMatch(symbol1, symbol2){
   if (symbol1.innerHTML === symbol2.innerHTML){
@@ -40,7 +40,7 @@ function checkMatch(symbol1, symbol2){
     setTimeout(function() {symbol1.classList.remove('open','show')}, 700);
     setTimeout(function() {symbol2.classList.remove('open','show')}, 700);
   }
-  checkedCardPair = [];
+  openCards = [];
   moves++;
   document.querySelector('.moves').innerHTML = moves;
   if (moves > 1){
@@ -48,13 +48,12 @@ function checkMatch(symbol1, symbol2){
   }
 }
 
-
 for(var i = 0; i < cards.length; i++){
   cards[i].addEventListener('click', function(){
     if (this.classList.contains('open') === false){
       displayCard(this);
-    if (checkedCardPair.length === 2) {
-      checkMatch(checkedCardPair[0],checkedCardPair[1])
+    if (openCards.length === 2) {
+      checkMatch(openCards[0],openCards[1])
     }
   }
   })
