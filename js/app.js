@@ -26,12 +26,26 @@ function shuffle(array) {
 }
 
 const cards = document.querySelectorAll('.card')
+let checkedCardPair = [];
+function checkMatch(symbol1, symbol2){
+  if (symbol1 === symbol2){
+    console.log(42)
+    checkedCardPair = [];
+  }
+}
+
 
 for(var i = 0; i < cards.length; i++){
   cards[i].addEventListener('click', function(){
     this.classList.add('open','show');
+    checkedCardPair.push(this.querySelector('i').className)
+    if (checkedCardPair.length === 2) {
+      checkMatch(checkedCardPair[0],checkedCardPair[1])
+    }
+    console.log(4)
   })
 }
+
 
 
 /*
