@@ -28,21 +28,26 @@ function shuffle(array) {
 const cards = document.querySelectorAll('.card')
 let checkedCardPair = [];
 function checkMatch(symbol1, symbol2){
-  if (symbol1 === symbol2){
-    console.log(42)
-    checkedCardPair = [];
+  if (symbol1.innerHTML === symbol2.innerHTML){
+    symbol1.classList.add('match');
+    symbol2.classList.add('match');
+    } else {
+    setTimeout(function() {symbol1.classList.remove('open','show')}, 700);
+    setTimeout(function() {symbol2.classList.remove('open','show')}, 700);
   }
+  checkedCardPair = [];
 }
 
 
 for(var i = 0; i < cards.length; i++){
   cards[i].addEventListener('click', function(){
+    if (this.classList.contains('open') === false){
     this.classList.add('open','show');
-    checkedCardPair.push(this.querySelector('i').className)
+    checkedCardPair.push(this)
     if (checkedCardPair.length === 2) {
       checkMatch(checkedCardPair[0],checkedCardPair[1])
     }
-    console.log(4)
+  }
   })
 }
 
