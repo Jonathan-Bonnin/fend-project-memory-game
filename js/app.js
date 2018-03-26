@@ -12,20 +12,34 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
+  let currentIndex = array.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+    deck.append(temporaryValue);
+  }
+  refresh();
 }
 
-const cards = document.querySelectorAll('.card')
+function refresh(){
+  for(let i = 0; i < cards.length; i++){
+   cards[i].classList.remove('open','show','match');
+  }
+  movesNumber.innerHTML = 0;
+  plural.innerHTML = '';
+
+}
+
+const deck = document.querySelector('.deck');
+const cards = document.querySelectorAll('.card');
+const movesNumber = document.querySelector('.moves');
+const plural = document.querySelector('.plural');
+const refreshBtn = document.querySelector('.fa-repeat')
+let arrayCards = [...cards];
+shuffle(arrayCards);
 let openCards = [];
 let moves = 0;
 
@@ -37,12 +51,6 @@ function displayCard(card) {
   }
 }
 
-function hideCards(card1, card2){
-  setTimeout(function(){
-  card1.classList.remove('open','show');
-  card2.classList.remove('open','show');
-}, 700)};
-
 function checkMatch(symbol1, symbol2){
   if (symbol1.innerHTML === symbol2.innerHTML){
     lockCards(symbol1, symbol2);
@@ -53,11 +61,17 @@ function checkMatch(symbol1, symbol2){
     moveCounter();
 }
 
+function hideCards(card1, card2){
+  setTimeout(function(){
+  card1.classList.remove('open','show');
+  card2.classList.remove('open','show');
+}, 700)};
+
 function moveCounter() {
   moves++;
-  document.querySelector('.moves').innerHTML = moves;
+  movesNumber.innerHTML = moves;
   if (moves > 1){
-  document.querySelector('.plural').innerHTML = 's';
+  plural.innerHTML = 's';
   }
 }
 function lockCards(card1, card2){
@@ -72,6 +86,10 @@ for(var i = 0; i < cards.length; i++){
     }
   })
 }
+
+refreshBtn.addEventListener ('click', function(){
+  shuffle(arrayCards)
+})
 
 
 
