@@ -11,6 +11,16 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+const deck = document.querySelector('.deck');
+const cards = document.querySelectorAll('.card');
+const movesNumber = document.querySelector('.moves');
+const plural = document.querySelector('.plural');
+const refreshBtn = document.querySelector('.fa-repeat')
+let arrayCards = [...cards];
+let openCards = [];
+let moves = 0;
+let pairsFound = 0;
+
 function shuffle(array) {
   let currentIndex = array.length, temporaryValue, randomIndex;
   while (0 !== currentIndex) {
@@ -30,18 +40,9 @@ function refresh(){
   }
   movesNumber.innerHTML = 0;
   plural.innerHTML = '';
-
+  pairsFound = 0;
+  moves = 0;
 }
-
-const deck = document.querySelector('.deck');
-const cards = document.querySelectorAll('.card');
-const movesNumber = document.querySelector('.moves');
-const plural = document.querySelector('.plural');
-const refreshBtn = document.querySelector('.fa-repeat')
-let arrayCards = [...cards];
-shuffle(arrayCards);
-let openCards = [];
-let moves = 0;
 
 function displayCard(card) {
   card.classList.add('open','show');
@@ -54,6 +55,10 @@ function displayCard(card) {
 function checkMatch(symbol1, symbol2){
   if (symbol1.innerHTML === symbol2.innerHTML){
     lockCards(symbol1, symbol2);
+    pairsFound++
+    if(pairsFound === 8){
+      // add code for modal/pop-up
+    }
     } else {
     hideCards(symbol1, symbol2);
     }
@@ -91,7 +96,7 @@ refreshBtn.addEventListener ('click', function(){
   shuffle(arrayCards)
 })
 
-
+shuffle(arrayCards);
 
 /*
  *[x] set up the event listener for a card. If a card is clicked:
