@@ -16,10 +16,15 @@ const cards = document.querySelectorAll('.card');
 const movesNumber = document.querySelector('.moves');
 const plural = document.querySelector('.plural');
 const refreshBtn = document.querySelector('.fa-repeat')
+const timer = document.querySelector('.timer')
 let arrayCards = [...cards];
 let openCards = [];
 let moves = 0;
 let pairsFound = 0;
+let timeStart = 0;
+let timeEnd = 0;
+let timeTaken = 0;
+let elapsedTime = 0;
 
 function shuffle(array) {
   let currentIndex = array.length, temporaryValue, randomIndex;
@@ -42,6 +47,8 @@ function refresh(){
   plural.innerHTML = '';
   pairsFound = 0;
   moves = 0;
+  timeStart = 0;
+  elapsedTime = 0;
 }
 
 function displayCard(card) {
@@ -57,7 +64,7 @@ function checkMatch(symbol1, symbol2){
     lockCards(symbol1, symbol2);
     pairsFound++
     if(pairsFound === 8){
-      // add code for modal/pop-up
+      endGame();
     }
     } else {
     hideCards(symbol1, symbol2);
@@ -86,6 +93,9 @@ function lockCards(card1, card2){
 
 for(var i = 0; i < cards.length; i++){
   cards[i].addEventListener('click', function(){
+    if (timeStart === 0) {
+      timeStart = new Date().getTime();
+    }
     if (this.classList.contains('open') === false){
       displayCard(this);
     }
@@ -95,8 +105,24 @@ for(var i = 0; i < cards.length; i++){
 refreshBtn.addEventListener ('click', function(){
   shuffle(arrayCards)
 })
+//inspired by https://stackoverflow.com/questions/19429890
+function checkTime(){
+  elapsedTime = ((Date.now() - timeStart)/1000).toFixed(2);;
+  if (timeStart === 0) {
+    timer.innerHTML = "Timer: " + 0;
+  } else {
+  timer.innerHTML = "Timer: " + Math.round(elapsedTime);
+}
+}
+
+function endGame() {
+ timeEnd = new Date().getTime();
+ timeTaken = ((timeEnd - timeStart)/1000).toFixed(2);
+}
 
 shuffle(arrayCards);
+
+window.setInterval(checkTime, 100);
 
 /*
  *[x] set up the event listener for a card. If a card is clicked:
@@ -107,4 +133,7 @@ shuffle(arrayCards);
  *[x]    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *[x]    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *[]    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ *[] add timer to board + congrats pop up
+ *[] remove stars: 1 at 14 moves, 1 more at 20
+
  */
