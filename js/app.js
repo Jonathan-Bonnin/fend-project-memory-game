@@ -19,6 +19,9 @@ const refreshBtn = document.querySelector('.fa-repeat')
 const timer = document.querySelector('.timer')
 const stars = [...document.querySelectorAll('.fa-star')]
 const starsBoard = document.querySelector('.stars')
+const modalStars = document.querySelector('.modal-stars')
+const modalMoves = document.querySelector('.modal-moves')
+const modalTimer = document.querySelector('.modal-time')
 let arrayCards = [...cards];
 let openCards = [];
 let moves = 0;
@@ -129,6 +132,9 @@ function endGame() {
  timeEnd = new Date().getTime();
  timeTaken = ((timeEnd - timeStart)/1000).toFixed(2);
  timer.innerHTML = "Timer: " + timeTaken;
+ modalStars.innerHTML = starsBoard.innerHTML;
+ modalMoves.innerHTML = "Moves: " + (moves+1);
+ modalTimer.innerHTML = "Time: " + timeTaken;
 }
 
 shuffle(arrayCards);
@@ -144,6 +150,9 @@ window.setInterval(checkTime, 100);
  *[x]    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *[x]    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *[]    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+    >Timer
+    ># Stars
+    ># Moves
  *[/] add timer to board + congrats pop up
  *[x] remove stars: 1 at 14 moves, 1 more at 21
 
