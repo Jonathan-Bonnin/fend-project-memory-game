@@ -14,11 +14,11 @@
 const deck = document.querySelector('.deck');
 const cards = document.querySelectorAll('.card');
 const movesNumber = document.querySelector('.moves');
-const plural = document.querySelector('.plural');
 const refreshBtn = document.querySelector('.fa-repeat')
 const timer = document.querySelector('.timer')
 const stars = [...document.querySelectorAll('.fa-star')]
 const starsBoard = document.querySelector('.stars')
+const modal = document.querySelector('.modal')
 const modalStars = document.querySelector('.modal-stars')
 const modalMoves = document.querySelector('.modal-moves')
 const modalTimer = document.querySelector('.modal-time')
@@ -57,6 +57,7 @@ function refresh(){
   for (var i = 0; i < 3; i++) {
     starsBoard.appendChild(stars[i]);
   }
+  modal.style.display = "none";
 }
 
 function displayCard(card) {
@@ -135,7 +136,13 @@ function endGame() {
  modalStars.innerHTML = starsBoard.innerHTML;
  modalMoves.innerHTML = "Moves: " + (moves+1);
  modalTimer.innerHTML = "Time: " + timeTaken;
+ modal.style.display = "block";
+
 }
+
+modal.addEventListener ('click', function(){
+  refresh();
+})
 
 shuffle(arrayCards);
 
