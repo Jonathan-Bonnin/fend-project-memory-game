@@ -43,8 +43,7 @@ function refresh(){
   for(let i = 0; i < cards.length; i++){
    cards[i].classList.remove('open','show','match');
   }
-  movesNumber.innerHTML = 0;
-  plural.innerHTML = '';
+  movesNumber.innerHTML = "0 Move";
   pairsFound = 0;
   moves = 0;
   timeStart = 0;
@@ -81,9 +80,10 @@ function hideCards(card1, card2){
 
 function moveCounter() {
   moves++;
-  movesNumber.innerHTML = moves;
-  if (moves > 1){
-  plural.innerHTML = 's';
+  if (moves === 1){
+    movesNumber.innerHTML = "1 move";
+  } else {
+  movesNumber.innerHTML = moves + " moves";
   }
 }
 function lockCards(card1, card2){
@@ -133,7 +133,7 @@ window.setInterval(checkTime, 100);
  *[x]    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *[x]    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *[]    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- *[] add timer to board + congrats pop up
+ *[/] add timer to board + congrats pop up
  *[] remove stars: 1 at 14 moves, 1 more at 20
 
  */
