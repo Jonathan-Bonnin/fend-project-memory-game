@@ -124,9 +124,9 @@ h1 {
 }
 
 .modal-content {
-  width: 250px;
-  height: 250px;
-  margin: 120px auto;
+  width: 300px;
+  height: 300px;
+  margin: 100px auto;
   border-radius: 8px;
   font-size: 1.8em;
   text-align: center;

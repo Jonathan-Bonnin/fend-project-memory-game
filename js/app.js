@@ -147,20 +147,3 @@ modal.addEventListener ('click', function(){
 shuffle(arrayCards);
 
 window.setInterval(checkTime, 100);
-
-/*
- *[x] set up the event listener for a card. If a card is clicked:
- *[x]  - display the card's symbol (put this functionality in another function that you call from this one)
- *[x]  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *[x]  - if the list already has another card, check to see if the two cards match
- *[x]    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *[x]    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *[x]    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *[]    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-    >Timer
-    ># Stars
-    ># Moves
- *[/] add timer to board + congrats pop up
- *[x] remove stars: 1 at 14 moves, 1 more at 21
-
- */

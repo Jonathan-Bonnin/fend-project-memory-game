@@ -4,6 +4,7 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
+* [Project Finished](#Project Finished)
 
 ## Instructions
 
@@ -18,3 +19,11 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Project Finished
+
+Hey, it's Jonathan, a Udacity student. What you read above what the original README and my comments are in this section. The project is now completed, and meets all requirements. 
+Optional Todos: 
+-Add fancy CSS animations
+-Change Icons
+-Add sound effects
