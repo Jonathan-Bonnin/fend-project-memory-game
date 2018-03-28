@@ -120,7 +120,7 @@ function checkTime(){
   elapsedTime = ((Date.now() - timeStart)/1000).toFixed(2);;
   if (timeStart === 0) {
     timer.innerHTML = "Timer: " + 0;
-  } else {
+  } else if (pairsFound !== 8) {
   timer.innerHTML = "Timer: " + Math.round(elapsedTime);
 }
 }
@@ -128,6 +128,7 @@ function checkTime(){
 function endGame() {
  timeEnd = new Date().getTime();
  timeTaken = ((timeEnd - timeStart)/1000).toFixed(2);
+ timer.innerHTML = "Timer: " + timeTaken;
 }
 
 shuffle(arrayCards);
