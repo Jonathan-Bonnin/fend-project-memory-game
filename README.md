@@ -4,7 +4,7 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
-* [Project Finished](#Project Finished)
+* [Project_Finished](#Project_Finished)
 
 ## Instructions
 
@@ -20,7 +20,7 @@ This repository is the starter code for _all_ Udacity students. Therefore, we mo
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Project Finished
+## Project_Finished
 
 Hey, it's Jonathan, a Udacity student. What you read above what the original README and my comments are in this section. The project is now completed, and meets all requirements. 
 Optional Todos: 
