@@ -17,6 +17,8 @@ const movesNumber = document.querySelector('.moves');
 const plural = document.querySelector('.plural');
 const refreshBtn = document.querySelector('.fa-repeat')
 const timer = document.querySelector('.timer')
+const stars = [...document.querySelectorAll('.fa-star')]
+const starsBoard = document.querySelector('.stars')
 let arrayCards = [...cards];
 let openCards = [];
 let moves = 0;
@@ -48,6 +50,10 @@ function refresh(){
   moves = 0;
   timeStart = 0;
   elapsedTime = 0;
+  starsBoard.innerHTML= '';
+  for (var i = 0; i < 3; i++) {
+    starsBoard.appendChild(stars[i]);
+  }
 }
 
 function displayCard(card) {
@@ -85,7 +91,11 @@ function moveCounter() {
   } else {
   movesNumber.innerHTML = moves + " moves";
   }
+  if (moves === 14 || moves === 21){
+    starsBoard.removeChild(starsBoard.children[0]);
+  }
 }
+
 function lockCards(card1, card2){
   card1.classList.add('match');
   card2.classList.add('match');
@@ -134,6 +144,6 @@ window.setInterval(checkTime, 100);
  *[x]    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *[]    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  *[/] add timer to board + congrats pop up
- *[] remove stars: 1 at 14 moves, 1 more at 20
+ *[x] remove stars: 1 at 14 moves, 1 more at 21
 
  */
