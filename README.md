@@ -22,8 +22,8 @@ The goal of the game is to find the 8 pairs of cards in the deck of 16 cards.
 
 ## Todos
 
--Add fancy CSS animations
--Change Icons
--Add sound effects
--Keep track of the variables inside a project
--Change timer (remove eventListner after the function that starts the timer is called)
+* Add fancy CSS animations
+* Change Icons
+* Add sound effects
+* Keep track of the variables inside a project
+* Change timer (remove eventListner after the function that starts the timer is called)
